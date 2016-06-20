@@ -49,3 +49,21 @@ class PersonNotes(models.Model):
 
     def __unicode__(self):
         return "%s (%s)" % (self.Person.name, self.timestamp)
+
+
+class RelationType(models.Model):
+    name = models.CharField(max_length=255)
+    to_name = models.CharField(max_length=255)
+    from_name = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Relationship(models.Model):
+    to_person = models.ForeignKey('Person')
+    from_person = models.ForeignKey('Person')
+    RelationType = models.ForeignKey('RelationType')
+
+    def __unicode__(self):
+        return "%s -> %s (%s)" % (self.to_person.name, self.from_person.name, RelationType.name)

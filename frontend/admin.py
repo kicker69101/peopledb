@@ -5,3 +5,5 @@ from frontend.models import *
 
 admin.site.register(Person)
 admin.site.register(Address)
+admin.site.register(LikesDislike)
+admin.site.register(PersonNotes)
