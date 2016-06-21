@@ -61,8 +61,8 @@ class RelationType(models.Model):
 
 
 class Relationship(models.Model):
-    to_person = models.ForeignKey('Person')
-    from_person = models.ForeignKey('Person')
+    to_person = models.ForeignKey('Person', related_name='to_name_set')
+    from_person = models.ForeignKey('Person', related_name='from_name_set')
     RelationType = models.ForeignKey('RelationType')
 
     def __unicode__(self):
