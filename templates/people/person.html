@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block custom_scripts %}
+<script src="/static/custom/people.js"></script>
+{% endblock %}
+{% block main_body %}
+<div class="row">
+    <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#addPerson">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add
+    </button>
+</div>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table" id="people_table">
+            <thead>
+                <tr><th>Name</th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addPersonForm">
+                    <div class="form-group">
+                        <label for="nameInput">Name</label>
+                        <input type="text" class="form-control" id="nameInput" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneInput">Phone number</label>
+                        <input type="text" class="form-control" id="phoneInput" placeholder="(555) 555-5555">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="addPersonBtn">Add Person</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -19,7 +19,7 @@ from frontend import views as frontend_views
 
 urlpatterns = [
     url(r'^$', frontend_views.index),
-    # url(r'^/people/$', frontend.views.people),
+    url(r'^people/$', frontend_views.people),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
 ]
