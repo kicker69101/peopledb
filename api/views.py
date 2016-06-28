@@ -14,9 +14,13 @@ class PersonAPI(APIView):
         except Person.DoesNotExist:
             raise Http404
 
-    def get(self, request, format=None):
-        persons = Person.objects.all()
-        serializer = PersonSerializer(persons, many=True)
+    def get(self, request, id=None, format=None):
+        if id is not None:
+            person = self.get_object(id)
+            serializer = PersonSerializer(person)
+        else:
+            persons = Person.objects.all()
+            serializer = PersonSerializer(persons, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -26,7 +30,7 @@ class PersonAPI(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
-        person = self.get_object(pk)
+    def delete(self, request, id, format=None):
+        person = self.get_object(id)
         person.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
